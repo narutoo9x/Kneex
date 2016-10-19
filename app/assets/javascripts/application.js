@@ -15,4 +15,17 @@
 //= require turbolinks
 //= require tether
 //= require bootstrap-sprockets
+//= require jquery.slick
 //= require_tree .
+
+jQuery(function($) {
+  jQuery(window).bind('scroll', function() {
+    if (jQuery(window).scrollTop() > 200) {
+      jQuery('.mu-main-navbar').addClass('navbar-bg');
+      jQuery('.navbar-brand').addClass('navbar-brand-small');
+    } else {
+      jQuery('.mu-main-navbar').removeClass('navbar-bg');
+      jQuery('.navbar-brand').removeClass('navbar-brand-small');
+    }
+  });
+});

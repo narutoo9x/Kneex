@@ -9,7 +9,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+# Fix turbo links not triger jquery event again
+gem 'jquery-turbolinks'
 
+# Jquery Slick
+gem "jquery-slick-rails"
 group :development, :test do
   gem 'byebug', platform: :mri
 end
@@ -26,3 +30,5 @@ gem 'bootstrap', '~> 4.0.0.alpha4'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
+gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
+gem 'hover-rails'
