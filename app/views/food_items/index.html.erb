@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="text-align: center;">Food Items</h1>
+<br>
+<%= link_to 'New Food Item', new_food_item_path, class: 'btn btn-primary'%>
+<hr class="primary">
+
+<% if @food_items.blank? %>
+  <h4> Sorry! We don't have this food!</h4>
+<% else %>
+  <ul style="list-style-type: none">
+    <% @food_items.each do |food| %>
+      <li>
+        <%= render 'food_item', food_item: food %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

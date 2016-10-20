@@ -1,0 +1,9 @@
+<%= simple_form_for(@food_item, html: {class: 'form-horizontal' }) do |f| %>
+  <%= f.input :name, label: 'Name', placeholder: 'Banh my tam giac' %>
+  <%= f.input :description, label: 'Description', placeholder: 'Banh my tron rau, cu , qua,...' %>
+  <%= f.input :price, label: 'Price (VND)', placeholder: '15000 VND' %>
+  <%= f.input :image_url, label: 'Image', placeholder: 'image url or leave it blank' %>
+  <%= f.association :section, label: 'Section', collection: Section.all, prompt: 'Choose a section' %>
+
+  <%= f.submit class: 'btn btn-primary hvr-icon-fade' %>
+<% end %>
