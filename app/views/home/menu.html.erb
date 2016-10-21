@@ -4,7 +4,9 @@
   <table class="menu-bar">
     <tr>
       <ul class="nav nav-pills menu-bar">
-      <li class="nav-item hvr-float-shadow"><a href="/menu" class="nav-link <%= 'section-active' if !params[:section] %>">All</a></li>
+      <li class="nav-item hvr-float-shadow">
+        <a href="/menu" class="nav-link <%= 'section-active' if !params[:section] %>">All</a>
+      </li>
       <% Section.all.each do |section| %>
         <li class="hvr-float-shadow nav-item">
           <%= link_to section.name, menu_path(section: section.name), class: "nav-link #{'section-active' if params[:section] == section.name}" %>
@@ -14,8 +16,4 @@
     </tr>
   </table>
 </section>
-
-<div class="row">
-  <%= render @food_items %>      
-  </div>
-</div>
+<%= render @food_items %>

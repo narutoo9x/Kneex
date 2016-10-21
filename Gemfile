@@ -34,3 +34,4 @@ gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 gem 'hover-rails'
 gem 'rails_12factor', group: :production
 gem 'simple_form'
+gem 'masonry-rails', '~> 0.2.4'

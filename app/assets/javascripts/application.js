@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require masonry/jquery.masonry
 //= require turbolinks
 //= require tether
 //= require bootstrap-sprockets
 //= require jquery.slick
 //= require_tree .
-

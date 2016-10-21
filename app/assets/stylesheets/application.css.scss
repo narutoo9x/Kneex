@@ -691,3 +691,12 @@ body {
     }
   }
 }
+
+#image-show {
+  display: flex;
+  .image {
+      margin: auto;
+      justify-content: center;
+      align-items: center;
+  }
+}

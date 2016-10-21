@@ -8,10 +8,10 @@
 				<li class="nav-item <% if(current_page?('/contact_us'))%> active <% end %>">
 					<a class="nav-link hvr-buzz-out" href="/contact_us">Contact</a>
 				</li>
-				<%= form_tag(menu_path, :method => "get", id: "search-form", class: "form-inline pull-xs-right") do %>
-				<%= text_field_tag :search, params[:search], class: "form-control ", placeholder: "search for food" %>
+				<%= form_tag(menu_path, :method => "get", class: "form-inline pull-xs-right") do %>
+				<%= text_field_tag :search, params[:search], class: "form-control hvr-round-corners", placeholder: "search for food" %>
 				<%= submit_tag "Search", class: "btn btn-outline-success hvr-bubble-float-left" %>
-				<% end %>				 
-			</ul>			 
+				<% end %>
+			</ul>
 		</div>
 </nav>
