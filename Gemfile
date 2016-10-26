@@ -35,4 +35,4 @@ gem 'hover-rails'
 gem 'rails_12factor', group: :production
 gem 'simple_form'
 gem 'masonry-rails', '~> 0.2.4'
-gem 'faker', git: 'git@github.com:stympy/faker.git'
+gem 'faker', '~> 1.6', '>= 1.6.3'
