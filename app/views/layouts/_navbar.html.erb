@@ -8,6 +8,14 @@
 				<li class="nav-item <% if(current_page?('/contact_us'))%> active <% end %>">
 					<a class="nav-link hvr-buzz-out" href="/contact_us">Contact</a>
 				</li>
+				<li class='nav-item active'>
+					<% if current_order.order_items.size > 0 %>
+						<%= link_to "Order (#{current_order.order_items.size}-
+															#{number_to_currency(total_price, unit: "VND", separator: ".", delimiter: ",", format: "%n %u")})", carts_index_path , class: 'nav-link hvr-wobble-bottom hvr-icon-fade' %>
+					<% else %>
+						<%= link_to "Order", carts_index_path, class: 'nav-link hvr-wobble-bottom hvr-icon-fade' %>
+					<% end %>
+				</li>
 				<%= form_tag(menu_path, :method => "get", class: "form-inline pull-xs-right") do %>
 				<%= text_field_tag :search, params[:search], class: "form-control hvr-round-corners", placeholder: "search for food" %>
 				<%= submit_tag "Search", class: "btn btn-outline-success hvr-bubble-float-left" %>

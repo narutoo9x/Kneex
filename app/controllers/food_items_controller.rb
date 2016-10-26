@@ -15,7 +15,6 @@ class FoodItemsController < ApplicationController
 
   def create
     @food_item = FoodItem.new(food_item_params)
-    
     respond_to do |format|
       if @food_item.save
         format.js

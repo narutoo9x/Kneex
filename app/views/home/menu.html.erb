@@ -1,19 +1,53 @@
+<!-- Page Content -->
 <section>
-  <h1 class="section-heading">Menu</h1>
-  <hr class="primary">
-  <table class="menu-bar">
-    <tr>
-      <ul class="nav nav-pills menu-bar">
-      <li class="nav-item hvr-float-shadow">
-        <a href="/menu" class="nav-link <%= 'section-active' if !params[:section] %>">All</a>
-      </li>
-      <% Section.all.each do |section| %>
-        <li class="hvr-float-shadow nav-item">
-          <%= link_to section.name, menu_path(section: section.name), class: "nav-link #{'section-active' if params[:section] == section.name}" %>
-        </li>
-      <% end %>
-      <ul>
-    </tr>
-  </table>
+<h1 style="text-align: center;">Menu</h1>
+<div class="menu-bar">
+	<ul class="nav nav-pills">
+		<li class="nav-item hvr-float-shadow">
+			<a href="/menu" class="nav-link <%= 'section-active' if !params[:section] %>">All</a>
+		</li>
+		<% Section.all.each do |section| %>
+			<li class="hvr-float-shadow nav-item">
+				<%= link_to section.name, menu_path(section: section.name), class: "nav-link #{'section-active' if params[:section] == section.name}" %>
+			</li>
+		<% end %>
+	<ul>
 </section>
-<%= render @food_items %>
+<div class="row" id="clearfix" style=" padding-bottom: 30px;">
+		<% if @food_items.count == 0 %>
+			<div class="col-md-12">
+				<p style="text-align: center; padding-top: 30px;">We don't serve it now. Please order other dish.</p>
+			</div>
+		<% else %>
+			<div class="col-md-2"></div>
+			<div class="col-md-9">
+			<%= form_tag nil, method: 'get' do %>
+				<% if !params[:section].nil? %>
+		      <%= hidden_field_tag :section, params[:section] %>
+		    <% end %>
+	      <div class="form-inline center">
+	        <%= select_tag :sort_column, options_for_select([['  Name  ', 'name'], ['  Price  ', 'price']]), class: 'form-control' %>
+	        <%= select_tag :sort_direction, options_for_select([['Ascending','asc'], ['Descending', 'desc']]), class: 'form-control' %>
+	        <%= submit_tag 'Sort', class: 'btn btn-outline-success hvr-bubble-float-left' %>
+	      </div>
+	    <% end %>
+	    </div>
+    <% end %>
+</div>
+<% @food_items.in_groups_of(3) do |group| %>
+  <div class="row">
+      <%= render group.compact %>
+  </div>
+<% end %>
+
+
+<hr>
+<footer>
+    <div class="row">
+        <div class="col-lg-12">
+            <p style="text-align: center">Copyright &copy; Kneex Restaurant 2016</p>
+        </div>
+    </div>
+</footer>
+
+

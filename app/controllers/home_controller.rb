@@ -13,6 +13,10 @@ class HomeController < ApplicationController
         @food_items = FoodItem.all
       end
     end
+
+    if params[:sort_column]
+        @food_items = @food_items.order("#{params[:sort_column]} #{params[:sort_direction]}")
+    end
   end
 
   def contact_us

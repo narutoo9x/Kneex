@@ -1,31 +1,58 @@
 <% if current_page?(controller: 'home', action: :menu ) || current_page?(controller: 'food_items', action: :index) %>
-<div class="col-sm-3">
-  <div class="card hvr-round-corners hvr-underline-reveal">
-    <%= image_tag(food_item.image_url_or_default, alt: food_item.name, class: 'card-img img-responsive img-thumbnail') %>
-    <div class="card-block">
-      <h4 class="card-title"><%= link_to food_item.name, food_item_path(food_item) %></h4>
-      <% if food_item.description.length > 100 %>
-        <p class="card-text"><%= food_item.description.slice(0,100)%>. . .</p>
-      <% else %>
-        <p class="card-text"><%= food_item.description %></p>
-      <% end%>
-      <p class="card-text"><small class="text-muted"><%= time_ago_in_words(food_item.created_at) %> ago</small></p>
-    </div>
-  </div>
+<div class="col-md-4">
+	<div class="card hvr-round-corners hvr-underline-reveal">
+		<%= link_to image_tag(food_item.image_url_or_default, alt: food_item.name, class: 'card-img img-responsive img-thumbnail'), food_item_path(food_item) %>
+		<div class="card-block order hvr-curl-bottom-right">
+			<h4 class="card-title"><%= link_to food_item.name, food_item_path(food_item) %></h4>
+			<% if food_item.description.length > 100 %>
+			<p class="card-text"><%= food_item.description.slice(0,100)%>. . .</p>
+			<% else %>
+			<p class="card-text"><%= food_item.description %></p>
+			<% end%>
+			<p class="card-text time"><small class="text-muted"><%= time_ago_in_words(food_item.created_at) %> ago</small></p>
+			<p class="card-text food_price" ><%= number_to_currency(food_item.price, unit: "VND", separator: ".", delimiter: ",", format: "%n %u") %></p>
+
+			<%= form_for OrderItem.new, remote: true do |f| %>
+        <div class="input-group">
+          <%= f.number_field :quantity, value: 1, class: "form-control order-number", min: 1 %>
+          <div class="input-group-btn">
+            <%= f.hidden_field :food_item_id, value: food_item.id %>
+            <%= f.submit "Order", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+
+		</div>
+	</div>
 </div>
 <% else %>
 <section>
-  <div class="row image-show">
-      <div class="col-sm-6 image">
-        <%= image_tag(food_item.image_url_or_default, alt: food_item.name, class: 'card-img img-thumbnail') %>
-      </div>
-      <div class="col-sm-6" style="padding-left: 32px">
-        <div class="card-block">
-          <h4 class="card-title"><%= food_item.name %></h4>
-          <p class="card-text"><small class="text-muted"><%= time_ago_in_words(food_item.created_at) %> ago</small></p>
-          <p class="card-text"><%= food_item.description %></p>
-        </div>
-    </div>
-  </div>
+	<div class="row">
+		<div class="card card-block">
+			<div class="col-sm-6">
+				<%= image_tag(food_item.image_url_or_default, alt: food_item.name, class: 'card-img img-thumbnail') %>
+			</div>
+			<div class="col-sm-6" style="padding-left: 32px;">
+				<div class="card-block order">
+					<h4 class="card-title"><%= food_item.name %></h4>
+
+					<p class="card-text time"><small class="text-muted"><%= time_ago_in_words(food_item.created_at) %> ago</small></p>
+					<p class="food_price" ><%= number_to_currency(food_item.price, unit: " VND", separator: ".", delimiter: ",", format: "%n %u") %></p>
+
+					<%= form_for OrderItem.new, remote: true do |f| %>
+		        <div class="input-group">
+		          <%= f.number_field :quantity, value: 1, class: "form-control order-number", min: 1 %>
+		          <div class="input-group-btn">
+		            <%= f.hidden_field :food_item_id, value: food_item.id %>
+		            <%= f.submit "Order", class: "btn btn-primary" %>
+		          </div>
+		        </div>
+		      <% end %>
+
+					<p class="card-text"><%= food_item.description %></p>
+				</div>
+			</div>
+		</div>
+	</div>
 <section>
 <% end %>
