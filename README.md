@@ -4,9 +4,9 @@
 
 Submitted by: **Thanh**
 
-Time spent: 12 hours spent in total (doing)
+Time spent: 15 hours spent.
 
-URL: **heroku-app-url**
+URL: **http://kneex.herokuapp.com/**
 
 ## User Stories
 
@@ -28,7 +28,7 @@ URL: **heroku-app-url**
 	* Section - Breakfast, Lunch, Dinner, Drinks
 	* Image URL - do a google search or use LoremFlickr: http://loremflickr.com/320/240/canhchua
 * [x] User should be able to filter by section of Breakfast, Lunch, Dinner, or Drinks and see only the relevant items.
-* [ ] User can sort menu items by “alphabetical”, “price low to high”, and “price high to low”.
+* [x] User can sort menu items by “alphabetical”, “price low to high”, and “price high to low”.
 * [x] User should be able to search for a menu item and see results.
 * [x] Clicking on an item in the menu brings up its detail, where you see the description and a larger picture.
 * [x] User can click “order” on a menu item to go to a “Create Order” page.
@@ -58,7 +58,7 @@ The following **known issues**:
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](path-to-your-GIF-file)
+![Video Walkthrough](public/kneex-cs.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -68,7 +68,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-  Copyright [yyyy] [name]
+  Copyright [2016] Thanh Khac
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
