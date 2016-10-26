@@ -1,19 +1,17 @@
-<%= simple_form_for(@food_item, html: {class: 'form-horizontal' style: 'padding: 32px 32px'}) do |f| %>
-  <div class="form-group">
-    <%= f.input :name, input_html: { class: 'form-control' }, placeholder: 'Banh my tam giac'%>
+<div class="row padding_top">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <%= simple_form_for(@food_item) do |f| %>
+      <div class="form-inputs">
+          <%= f.input :name, input_html: { class: 'form-control' }, placeholder: 'Banh my tam giac'%>
+          <%= f.input :description, input_html: { class: 'form-control' }, placeholder: 'Banh my tron rau, cu , qua,...' %>
+          <%= f.input :price, input_html: { class: 'form-control' }, placeholder: '15000 VND' %>
+          <%= f.input :image_url, input_html: { class: 'form-control' }, placeholder: 'image url or leave it blank' %>
+          <%= f.association :section, input_html: { class: 'form-control' }, collection: Section.all, prompt: 'Choose a section' %>
+      </div>
+      <div class="form-actions padding_top">
+        <%= f.submit class: 'btn btn-primary hvr-icon-fade' %>
+      </div>
+    <% end %>
   </div>
-  <div class="form-group">
-    <%= f.input :description, input_html: { class: 'form-control' }, placeholder: 'Banh my tron rau, cu , qua,...' %>
-  </div>
-  <div class="form-group">
-    <%= f.input :price, input_html: { class: 'form-control' }, placeholder: '15000 VND' %>
-  </div>
-  <div class="form-group">
-    <%= f.input :image_url, input_html: { class: 'form-control' }, placeholder: 'image url or leave it blank' %>
-  </div>
-  <div class="form-group">
-    <%= f.association :section, input_html: { class: 'form-control' }, collection: Section.all, prompt: 'Choose a section' %>
-  </div>
-
-  <%= f.submit class: 'btn btn-primary hvr-icon-fade' %>
-<% end %>
+</div>
