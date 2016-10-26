@@ -11,6 +11,8 @@
   <body>
     <%= render 'layouts/navbar' %>
 
+    <%= flash_messages%>
+
     <% if current_page?('/')%>
       <%= yield %>
     <% else %>

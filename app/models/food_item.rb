@@ -3,7 +3,7 @@ class FoodItem < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :price, presence: true
-  
+
   def self.search(search)
     where("name ILIKE ?", "%#{search}%")
   end
@@ -12,8 +12,8 @@ class FoodItem < ApplicationRecord
     if image_url.present?
       image_url
     else
-      "http://loremflickr.com/320/240/#{name.gsub(' ', '+')}"  
+      "http://loremflickr.com/320/240/#{name.gsub(' ', '+')}"
     end
   end
-  
+
 end

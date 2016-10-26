@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'carts/index'
   post 'carts/confirm'
+  get 'carts/show'
 
   get 'menu' => 'home#menu'
 

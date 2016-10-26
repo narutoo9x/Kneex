@@ -1,44 +1,31 @@
 <h1 class="section-heading">Check out Cart</h1>
 <hr>
 <div class="row">
-	<div class="col-sm-6 col-md-6">
-		<div class="card card-block">
-			<table class="table table-hover">
-			  <thead>
-			    <tr>
-			      <th>Food</th>
-			      <th>Price</th>
-			      <th>Total Price</th>
-			    </tr>
-			  </thead>
-					<% @order.order_items.each do |order_item| %>
-				  <tbody>
-				    <tr>
-				      <td><%= "#{order_item.food_item.name} x #{order_item.quantity}" %></td>
-				      <td><%= number_to_currency(order_item.food_item.price, unit: "VND", separator: ".", delimiter: ",", format: "%n %u")%></td>
-				      <td><%= number_to_currency(order_item.food_item.price * order_item.quantity, unit: "VND", separator: ".", delimiter: ",", format: "%n %u") %></td>
-				    </tr>
-				  </tbody>
-				  <% end %>
-				</table>
+	<% unless current_order.order_items.size > 0 %>
+		<div class="col-sm-12">
+			<p style="text-align: center; padding-top: 30px;">You don't have any order item. Please <%= link_to 'go back', menu_path %> to menu to order.</p>
 		</div>
-  </div>
-
-  <div class="col-sm-6 col-md-6">
-		<div class="card card-block">
-			<%= simple_form_for(@order, url: carts_confirm_path, method: 'post') do |f| %>
-		  <%= f.error_notification %>
-		  <div class="form-inputs">
-		  	<%= f.input :name, input_html: { class: 'form-control' }%>
-		    <%= f.input :address, input_html: { class: 'form-control' }%>
-		  </div>
-		  <div style="padding: 1em; ">
-			  	Price: <p class='food_price'><%= number_to_currency(total_price, unit: "VND", separator: ".", delimiter: ",", format: "%n %u") %> </p>
+	<% else %>
+		<div class="col-sm-6 col-md-6">
+			<%= render 'card_info', order: @order %>
+	  </div>
+	  <div class="col-sm-6 col-md-6">
+			<div class="card card-block">
+				<%= simple_form_for(@order, url: carts_confirm_path, method: 'post') do |f| %>
+			  <%= f.error_notification %>
+			  <div class="form-inputs">
+			  	<%= f.input :name, input_html: { class: 'form-control' }%>
+			    <%= f.input :email, input_html: { class: 'form-control' }%>
+			    <%= f.input :address, input_html: { class: 'form-control' }%>
 			  </div>
-		  <div class="form-actions">
-		    <%= f.submit :confirm, class: 'btn btn-primary' %>
-		  </div>
-			<% end %>
+			  <div style="padding: 1em; ">
+				  	Price: <p class='food_price'><%= number_to_currency(total_price, unit: "VND", separator: ".", delimiter: ",", format: "%n %u") %> </p>
+				  </div>
+			  <div class="form-actions">
+			    <%= f.submit :confirm, class: 'btn btn-primary'%>
+			  </div>
+				<% end %>
+			</div>
 		</div>
-	</div>
+	<% end %>
 </div>
