@@ -6,8 +6,6 @@ class FoodItemsController < ApplicationController
   end
 
   def show
-    # @food_item = FoodItem.find(params[:id])
-    # FoodItem.increment_counter(:view, params[:id])
   end
 
   def new

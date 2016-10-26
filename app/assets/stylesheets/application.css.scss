@@ -359,23 +359,19 @@ header {
 	text-transform: uppercase;
 }
 
-.hvr-sweep-to-right:hover, .hvr-sweep-to-right:focus, .hvr-sweep-to-right:active {
-	color: white;
-	border-radius: 300px;
-}
-.hvr-sweep-to-right:hover:before, .hvr-sweep-to-right:focus:before, .hvr-sweep-to-right:active:before {
-	border-radius: 300px;
-	-webkit-transform: scaleX(1);
-	transform: scaleX(1);
+.hvr-sweep-to-right:before,
+.hvr-sweep-to-left:before {
+  background: #fff;
+  border-radius: 300px;
 }
 
-.hvr-sweep-to-left:hover, .hvr-sweep-to-left:focus, .hvr-sweep-to-left:active {
-	color: white;
-	border-radius: 300px;
-}
-.hvr-sweep-to-left:hover:before, .hvr-sweep-to-left:focus:before, .hvr-sweep-to-left:active:before {
-	-webkit-transform: scaleX(1);
-	transform: scaleX(1);
+.hvr-sweep-to-right:hover,
+.hvr-sweep-to-right:focus,
+.hvr-sweep-to-right:active,
+.hvr-sweep-to-left:hover,
+.hvr-sweep-to-left:focus,
+.hvr-sweep-to-left:active {
+	color: #f05f40;
 	border-radius: 300px;
 }
 
@@ -414,10 +410,10 @@ img {
 }
 
 .food_price {
-		padding: 10px;
-		display:inline;
-		float: right;
-		font-weight: 900;
-		font-size: 30;
-		color: #f05f40;
+	padding: 10px;
+	display:inline;
+	float: right;
+	font-weight: 900;
+	font-size: 30;
+	color: #f05f40;
 }
